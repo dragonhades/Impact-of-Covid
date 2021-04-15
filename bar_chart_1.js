@@ -53,7 +53,7 @@ function bar_chart_1() {
         .attr("text-anchor", "middle")
         .attr("class", "title")
         .style("font-size", "16px") 
-        .text("Perceived Mental Health");
+        .text("Perceived Mental Health Since COVID");
 
 		var bars = svg.selectAll(".bar")
 			.data(data());
@@ -132,15 +132,4 @@ function bar_chart_1() {
 		.transition().duration(500)
 	    .text(d=>d.Value);
 	}
-
-	function count(array, key, value) {
-		// console.log(array[0][key]);
-		var count = 0;
-		for(var i = 0; i < array.length; ++i){
-		    if(array[i][key] == value)
-		        count++; 
-		}
-		return count;
-	}
-
 }

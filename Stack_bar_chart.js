@@ -25,7 +25,7 @@ function stacked_bar_chart() {
 		.attr("class", "x-axis")
 
 	var color = d3.scaleOrdinal()
-		.range(["CornflowerBlue", "lightblue", "deepskyblue", "darkorange"])
+		.range(["CornflowerBlue", "lightblue", "deepskyblue", "RoyalBlue", "SlateBlue", "darkorange"])
 		.domain(keys);
 
 	data.forEach(function(d) {
@@ -129,6 +129,10 @@ function stacked_bar_chart() {
 				.attr("fill", "none")
 				.attr("stroke","red")
 				.attr("stroke-width",2);
+
+				selected = d;
+			} else {
+				selected = null;
 			}
 			
 			// console.log(csv);
@@ -165,36 +169,47 @@ function stacked_bar_chart() {
 		// console.log(csv.columns);
 		data = 
 		[{"Category": "Change in work hours", 
-			"k1": count(csv, "EMP_10_A", 1), "k2": count(csv, "EMP_10_A", 2) - count(csv, "EMP_10_B", 1), "k3": count(csv, "EMP_10_B", 1), "k4": count(csv, "EMP_10_A", 9), 
-			"keynames": ["Population: increase in work hours", "Population: no change in work hours", "Population: decrease in work hours", "Population: answer not Stated"],
-			"keycat": ["EMP_10_A", "EMP_10_A XOR EMP_10_B", "EMP_10_B", "EMP_10_A"],
-			"keycodes": [1, 0, 1, 9]},
+			"k1": count(csv, "EMP_10_B", 1), "k2": count(csv, "EMP_10_A", 2) - count(csv, "EMP_10_B", 1), "k3": count(csv, "EMP_10_A", 1), "k4": 0, "k5": 0, "k6": count(csv, "EMP_10_A", 9), 
+			"keynames": ["Population: decrease in work hours", "Population: no change in work hours", "Population: Increase in work hours", "", "", "Population: answer not Stated"],
+			"keycat": ["EMP_10_B", "EMP_10_A XOR EMP_10_B", "EMP_10_A", "", "", "EMP_10_A"],
+			"keycodes": [1, 0, 1, 0, 0, 9]},
 		{"Category": "Change in pay/earning", 
-			"k1": count(csv, "EMP_10_C", 1), "k2": count(csv, "EMP_10_C", 2) - count(csv, "EMP_10_D", 1), "k3": count(csv, "EMP_10_D", 1), "k4": count(csv, "EMP_10_C", 9),
-			"keynames": ["Population: increase in work hours", "Population: no change in work hours", "Population: decrease in work hours","Population: answer not Stated"],
-			"keycat": ["EMP_10_C", "EMP_10_C XOR EMP_10_D", "EMP_10_D", "EMP_10_C"],
-			"keycodes": [1, 0, 1, 9]},
-		{"Category": "Temporary layoff/business closure", "k1": count(csv, "EMP_10_E", 1), "k2": 0, "k3": count(csv, "EMP_10_E", 2), "k4": count(csv, "EMP_10_E", 9),
-			"keynames": ["Population: Yes", "", "Population: No","Population: answer not Stated"],
-			"keycat": ["EMP_10_E", "", "EMP_10_E", "EMP_10_E"],
-			"keycodes": [1, 0, 2, 9]},
-		{"Category": "Job loss/ Permanent business closure", "k1": count(csv, "EMP_10_G", 1), "k2": 0, "k3": count(csv, "EMP_10_G", 2), "k4": count(csv, "EMP_10_G", 9),
-			"keynames": ["Population: Yes", "", "Population: No","Population: answer not Stated"],
-			"keycat": ["EMP_10_G", "", "EMP_10_G", "EMP_10_G"],
-			"keycodes": [1, 0, 2, 9]}];
-
-		keys = ["k1", "k2", "k3", "k4"];
+			"k1": count(csv, "EMP_10_C", 1), "k2": count(csv, "EMP_10_C", 2) - count(csv, "EMP_10_D", 1), "k3": count(csv, "EMP_10_D", 1), "k4": 0, "k5": 0, "k6": count(csv, "EMP_10_C", 9),
+			"keynames": ["Population: increase in pay/earning", "Population: no change in pay/earning", "Population: decrease in pay/earning", "", "", "Population: answer not Stated"],
+			"keycat": ["EMP_10_C", "EMP_10_C XOR EMP_10_D", "EMP_10_D", "", "", "EMP_10_C"],
+			"keycodes": [1, 0, 1, 0, 0, 9]},
+		{"Category": "Temporary layoff/business closure", "k1": count(csv, "EMP_10_E", 2), "k2": 0, "k3": count(csv, "EMP_10_E", 1), "k4": 0, "k5": 0, "k6": count(csv, "EMP_10_E", 9),
+			"keynames": ["Population: Don't have temporary layoff/business closure", "", "Population: Have temporary layoff/business closure", "", "", "Population: answer not Stated"],
+			"keycat": ["EMP_10_E", "", "EMP_10_E", "", "", "EMP_10_E"],
+			"keycodes": [2, 0, 1, 0, 0, 9]},
+		{"Category": "Job loss/ Permanent business closure", "k1": count(csv, "EMP_10_G", 2), "k2": 0, "k3": count(csv, "EMP_10_G", 1), "k4": 0, "k5": 0, "k6": count(csv, "EMP_10_G", 9),
+			"keynames": ["Population: Don't have job loss/ Permanent business closure", "", "Population: Have job loss/ Permanent business closure", "", "", "Population: answer not Stated"],
+			"keycat": ["EMP_10_G", "", "EMP_10_G", "", "", "EMP_10_G"],
+			"keycodes": [2, 0, 1, 0, 0, 9]},
+		{"Category": "Received Income: Employment", "k1": count(csv, "CIN_05_A", 1), "k2": 0, "k3": count(csv, "CIN_05_A", 2), "k4": 0, "k5": 0, "k6": count(csv, "CIN_05_A", 9),
+			"keynames": ["Population: Received employment income", "", "Population: No employment income", "", "", "Population: answer not Stated"],
+			"keycat": ["CIN_05_A", "", "CIN_05_A", "", "", "CIN_05_A"],
+			"keycodes": [1, 0, 2, 0, 0, 9]},
+		{"Category": "Not Receive Psycho Therapy", "k1": count(csv, "HL_25_D", 2), "k2": 0, "k3": count(csv, "HL_25_D", 1), "k4": 0, "k5": 0, "k6": count(csv, "HL_25_D", 9),
+			"keynames": ["Population: Received", "", "Population: Not Received", "", "", "Population: answer not Stated"],
+			"keycat": ["HL_25_D", "", "HL_25_D", "", "", "HL_25_D"],
+			"keycodes": [2, 0, 1, 0, 0, 9]},
+		{"Category": "Food/groceries Expense", "k1": count(csv, "EXP_05D", 4), "k2": count(csv, "EXP_05D", 3), "k3": count(csv, "EXP_05D", 2), "k4": count(csv, "EXP_05D", 1), "k5": count(csv, "EXP_05D", 5), "k6": count(csv, "EXP_05D", 9),
+			"keynames": ["Population: No impact", "Population: Minor impact", "Population: moderate impact", "Population: major impact", "Population: too soon to tell", "Population: answer not Stated"],
+			"keycat": ["EXP_05D", "EXP_05D", "EXP_05D", "EXP_05D", "EXP_05D", "EXP_05D"],
+			"keycodes": [4, 3, 2, 1, 5, 9]},
+		{"Category": "Perscription medication expense", "k1": count(csv, "EXP_05F", 4), "k2": count(csv, "EXP_05F", 3), "k3": count(csv, "EXP_05F", 2), "k4": count(csv, "EXP_05F", 1), "k5": count(csv, "EXP_05F", 5), "k6": count(csv, "EXP_05F", 9),
+			"keynames": ["Population: No impact", "Population: Minor impact", "Population: moderate impact", "Population: major impact", "Population: too soon to tell", "Population: answer not Stated"],
+			"keycat": ["EXP_05F", "EXP_05F", "EXP_05F", "EXP_05F", "EXP_05F", "EXP_05F"],
+			"keycodes": [4, 3, 2, 1, 5, 9]},
+		{"Category": "Perceived health since COVID", "k1": count(csv, "HL_05", 1), "k2": count(csv, "HL_05", 2), "k3": count(csv, "HL_05", 3), "k4": count(csv, "HL_05", 4), "k5": count(csv, "HL_05", 5), "k6": count(csv, "HL_05", 9),
+			"keynames": ["Population: Excellent", "Population: Very good", "Population: Good", "Population: Fair", "Population: Poor", "Population: answer not Stated"],
+			"keycat": ["HL_05", "HL_05", "HL_05", "HL_05", "HL_05", "HL_05"],
+			"keycodes": [1, 2, 3, 4, 5, 9]},
+		];
+		
+		keys = ["k1", "k2", "k3", "k4", "k5", "k6"];
     }
-}
-
-function count(array, key, value) {
-	// console.log(array[0][key]);
-	var count = 0;
-	for(var i = 0; i < array.length; ++i){
-	    if(array[i][key] == value)
-	        count++; 
-	}
-	return count;
 }
 
 function wrap(text, width) {
@@ -219,16 +234,4 @@ function wrap(text, width) {
       }
     }
   })
-}
-function update_union_csv(){
-	union_csv = stack_ft_csv.filter(d=>map_ft_csv.some(e=> d.PUMFID == e.PUMFID));
-
-	bar_chart_1()
-
-	bar_chart_2()
-
-	map();
-
-	// d3.select("#bar_chart_1").selectAll("rect").attr("fill", save1);
-	// d3.select("#bar_chart_2").selectAll("rect").attr("fill", save2);
 }

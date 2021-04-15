@@ -131,15 +131,4 @@ function bar_chart_2() {
 		.transition().duration(500)
 		.text(d=>d.Value);
 	}
-
-	function count(array, key, value) {
-		// console.log(array[0][key]);
-		var count = 0;
-		for(var i = 0; i < array.length; ++i){
-			if(array[i][key] == value)
-				count++; 
-		}
-		return count;
-	}
-
 }

@@ -23,7 +23,7 @@ function map(){
   height = +svg.attr("height") - margin.top - margin.bottom;
 
   var projection = d3.geoMercator()
-  .center([85, 57])
+  .center([94, 57])
   .scale(500)
   .rotate([-180,0]);
   // console.log(csv);
@@ -66,7 +66,7 @@ function map(){
           .attr("x", path.centroid(d.geometry)[0])
           .attr("y", path.centroid(d.geometry)[1])
           .attr("text-anchor", "middle")
-          .style("fill", "gray")
+          .style("fill", "CornflowerBlue")
           .style("font-size", "25px") 
           .text(e=>d.id+" : "+data(union_csv).filter(e=>d.properties.PRUID==e.code)[0].population)
         })
