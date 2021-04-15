@@ -4,9 +4,17 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Impact of Covid on CP patients's mental health - data vis</title>
+	<!-- <script src="https://d3js.org/d3.v6.min.js"></script> -->
 	<script src="d3.js"></script>
+	<script src="https://d3js.org/d3-array.v2.min.js"></script>
+	<script src="https://d3js.org/d3-geo.v2.min.js"></script>
+	<script src="https://d3js.org/topojson.v1.min.js"></script>
 	<script src="app.js" defer></script>
-	<script src="bar_chart.js" defer></script>
+	<script src="stack_bar_chart.js" defer></script>
+	<script src="bar_chart_1.js" defer></script>
+	<script src="bar_chart_2.js" defer></script>
+	<script src="canada_map.js" defer></script>
+	<script src="chord.js" defer></script>
 	<script>
 
 </script>
@@ -14,14 +22,17 @@
 		
 	body {
 		margin: auto;
-		width: 650px;
-		font: 12px arial;
+		width: 1720px;
+		font: 13px arial;
 	}
 
 	</style>
 </head>
 <body>
-	<svg id="stacked_bar_chart" width="700" height="420"></svg>
-	<svg id="bar_chart" width="700" height="420"></svg>
+	<svg id="stacked_bar_chart" width="900" height="620"></svg>
+	<svg id="bar_chart_1" width="360" height="620"></svg>
+	<svg id="bar_chart_2" width="360" height="620"></svg>
+	<svg id="map" width="900" height="650"></svg>
+	<svg id="chord" width="900" height="650"></svg>
 </body>
 </html>
