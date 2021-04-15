@@ -25,7 +25,7 @@ function stacked_bar_chart() {
 		.attr("class", "x-axis")
 
 	var color = d3.scaleOrdinal()
-		.range(["CornflowerBlue", "lightblue", "deepskyblue", "RoyalBlue", "SlateBlue", "darkorange"])
+		.range(["CornflowerBlue", "lightblue", "deepskyblue", "RoyalBlue", "lightskyblue", "darkorange"])
 		.domain(keys);
 
 	data.forEach(function(d) {
@@ -205,6 +205,10 @@ function stacked_bar_chart() {
 		{"Category": "Perceived health since COVID", "k1": count(csv, "HL_05", 1), "k2": count(csv, "HL_05", 2), "k3": count(csv, "HL_05", 3), "k4": count(csv, "HL_05", 4), "k5": count(csv, "HL_05", 5), "k6": count(csv, "HL_05", 9),
 			"keynames": ["Population: Excellent", "Population: Very good", "Population: Good", "Population: Fair", "Population: Poor", "Population: answer not Stated"],
 			"keycat": ["HL_05", "HL_05", "HL_05", "HL_05", "HL_05", "HL_05"],
+			"keycodes": [1, 2, 3, 4, 5, 9]},
+		{"Category": "Health compared with before COVID", "k1": count(csv, "HL_15", 1), "k2": count(csv, "HL_15", 2), "k3": count(csv, "HL_15", 3), "k4": count(csv, "HL_15", 4), "k5": count(csv, "HL_15", 5), "k6": count(csv, "HL_15", 9),
+			"keynames": ["Population: Much better now", "Population: Somewhat better now", "Population: About the same", "Population: Somewhat worse now", "Population: Much worse now", "Population: answer not Stated"],
+			"keycat": ["HL_15", "HL_15", "HL_15", "HL_15", "HL_15", "HL_15"],
 			"keycodes": [1, 2, 3, 4, 5, 9]},
 		];
 		

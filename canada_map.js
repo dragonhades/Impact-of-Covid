@@ -33,7 +33,7 @@ function map(){
 
   // console.log(data(csv));
   const blue = d3.scaleSequential()
-  .domain([0, 2000])
+  .domain([0, 1500])
   .interpolator(d3.interpolateBlues);
 
   if(!d3.select("#map").select(".feature").empty()) return update();
@@ -44,13 +44,18 @@ function map(){
 
       var g = svg.append("g");
 
+  svg.append("text")
+  .attr("x", (width+margin.right) / 2)             
+  .attr("y", margin.top/2-20)
+  .attr("text-anchor", "middle")
+  .attr("class", "title")
+  .style("font-size", "16px") 
+  .text("Geographic distribution of the target population");
+
 
   d3.json("https://raw.githubusercontent.com/dragonhades/Impact-of-Covid/main/canada.topo.json").then(function(canada) {
 
     // console.log(canada);
-
-
-
     g.selectAll("path")
     .data(topojson.feature(canada, canada.objects['provinces']).features)
     .enter().append("path")
@@ -79,7 +84,6 @@ function map(){
           // console.log(map_csv);
           update_union_csv();
         })
-
         .on("mouseout", function(d){
           d3.select(this).style("fill", function(d, i){ return blue(data(union_csv).filter(e=>d.properties.PRUID==e.code)[0].population); })
           svg.selectAll(".labels").remove();

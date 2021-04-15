@@ -11,43 +11,48 @@ function chord(){
     "Major impact on food/groceries Expense": [],
     "Major impact on perscription medication expense": [],
     "Perceived poor health since COVID": [],
+    "Better health compared with before COVID": []
   }
   function update_data(){
     var ft_data = csv.filter(d=>d.EMP_10_A==1);
     matrixData["Increase in work hours"] =
-      [0, count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5)]
+      [0, count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5), count(ft_data, "HL_15", 2)]
     
     ft_data = csv.filter(d=>d.EMP_10_D==1);
     matrixData["Decrease in pay/earning"] =
-      [count(ft_data, "EMP_10_A", 1), 0, count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5)]    
+      [count(ft_data, "EMP_10_A", 1), 0, count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5), count(ft_data, "HL_15", 2)]    
     
     ft_data = csv.filter(d=>d.EMP_10_E==1);
     matrixData["Temporary layoff/business closure"] =
-      [count(ft_data, "EMP_10_A", 1), count(ft_data, "EMP_10_D", 1), 0, count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5)]
+      [count(ft_data, "EMP_10_A", 1), count(ft_data, "EMP_10_D", 1), 0, count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5), count(ft_data, "HL_15", 2)]
 
     ft_data = csv.filter(d=>d.EMP_10_G==1);
     matrixData["Lost job/business closed"] =
-      [count(ft_data, "EMP_10_A", 1), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), 0, count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5)]
+      [count(ft_data, "EMP_10_A", 1), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), 0, count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5), count(ft_data, "HL_15", 2)]
   
     ft_data = csv.filter(d=>d.CIN_05_A==2);
     matrixData["No employment income"] =
-      [count(ft_data, "EMP_10_A", 2), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), 0, count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5)]
+      [count(ft_data, "EMP_10_A", 2), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), 0, count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5), count(ft_data, "HL_15", 2)]
 
     ft_data = csv.filter(d=>d.HL_25_D==1);
     matrixData["Not Receive Psycho Therapy"] =
-      [count(ft_data, "EMP_10_A", 2), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), 0, count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5)]
+      [count(ft_data, "EMP_10_A", 2), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), 0, count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5), count(ft_data, "HL_15", 2)]
 
     ft_data = csv.filter(d=>d.EXP_05D==1);
     matrixData["Major impact on food/groceries Expense"] =
-      [count(ft_data, "EMP_10_A", 2), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), 0, count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5)]
+      [count(ft_data, "EMP_10_A", 2), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), 0, count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 5), count(ft_data, "HL_15", 2)]
 
     ft_data = csv.filter(d=>d.EXP_05F==1);
     matrixData["Major impact on perscription medication expense"] =
-      [count(ft_data, "EMP_10_A", 2), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), 0, count(ft_data, "HL_05", 5)]
+      [count(ft_data, "EMP_10_A", 2), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), 0, count(ft_data, "HL_05", 5), count(ft_data, "HL_15", 2)]
   
     ft_data = csv.filter(d=>d.HL_05==5);
     matrixData["Perceived poor health since COVID"] =
-      [count(ft_data, "EMP_10_A", 2), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), 0]
+      [count(ft_data, "EMP_10_A", 2), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), 0, count(ft_data, "HL_15", 2)]
+
+    ft_data = csv.filter(d=>d.HL_15==2);
+    matrixData["Better health compared with before COVID"] =
+      [count(ft_data, "EMP_10_A", 2), count(ft_data, "EMP_10_D", 1), count(ft_data, "EMP_10_E", 1), count(ft_data, "EMP_10_G", 1), count(ft_data, "CIN_05_A", 2), count(ft_data, "HL_25_D", 1), count(ft_data, "EXP_05D", 1), count(ft_data, "EXP_05F", 1), count(ft_data, "HL_05", 2), 0]
   }
   update_data();
 
@@ -75,21 +80,6 @@ function chord(){
 
   var ribbon = d3.ribbon()
   .radius(innerRadius);
-  var color = d3.scaleOrdinal()
-    .domain(d3.range(4))
-    .range(["#6FCDE3", 
-            "#D7DAE5", 
-            "#D7DAE5", 
-            "#D7DAE5", 
-            "#D7DAE5", 
-            "#D7DAE5", 
-            "#E5E52B",
-            "#D7DAE5",
-            "#D7DAE5", 
-            "#D7DAE5", 
-            "#D7DAE5", 
-            "#D7DAE5"
-           ]);
 
   // if(!d3.select("#chord").select("g").selectAll("path").empty()) return update();
 
@@ -145,12 +135,15 @@ function chord(){
       if(selected.cat=="HL_05" && d.index == 8){
         return "RoyalBlue";
       }
+      if(selected.cat=="HL_15" && d.index == 9){
+        return "RoyalBlue";
+      }
     }
         // console.log("1");
         return "gray";
     })
   // .style("stroke", function(d) { return d3.rgb(color(d.index)).darker(); })
-  .attr("d", arc);
+  .attr("d", arc)
 
   var groupTick = group.selectAll(".group-tick")
   .data(function(d) { return groupTicks(d, 1e3); })
@@ -209,6 +202,9 @@ function chord(){
         return "RoyalBlue";
       }
       if(selected.cat=="HL_05" && (d.source.index == 8 || d.target.index == 8)){
+        return "RoyalBlue";
+      }
+      if(selected.cat=="HL_15" && (d.source.index == 9 || d.target.index == 9)){
         return "RoyalBlue";
       }
     }
